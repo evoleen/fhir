@@ -35,7 +35,7 @@ class FhirDecimal extends FhirNumber {
     } else if (inValue is String) {
       final String stringValue = inValue.trim();
       final double? doubleValue = double.tryParse(stringValue);
-      
+
       if (doubleValue != null) {
         return FhirDecimal._(
           stringValue,
@@ -63,7 +63,8 @@ class FhirDecimal extends FhirNumber {
   double? get value => valueNumber as double?;
 
   @override
-  dynamic toJson() => isInt ? valueNumber?.toInt() : valueNumber;
+  dynamic toJson() =>
+      isInt ? valueNumber?.toInt().toString() : valueNumber.toString();
 
   @override
   dynamic toYaml() => isInt ? valueNumber?.toInt() : valueNumber;
